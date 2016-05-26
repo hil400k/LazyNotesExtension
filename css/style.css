@@ -22,7 +22,14 @@ body {
      -webkit-transform: rotate(360deg);
   }
 }
-
+.message {
+    color: #ff4646;
+    font-weight: 600;
+    font-size: 12px;
+}
+.note-time {
+    background: rgb(221, 221, 221);
+}
 #login-settings {
     margin-bottom: 10px;
     background: rgb(221, 221, 221);
@@ -39,7 +46,10 @@ body {
     background: rgb(221, 221, 221);
 }
 .loader {
+    margin-top: 10px;
     margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
 }
 .notes-input {
     width: 100%;
@@ -47,4 +57,7 @@ body {
     border: none;
     resize: none;
     padding: 10px;
+}
+.panel-group {
+    margin-bottom: 0;
 }

@@ -1,12 +1,11 @@
 <div>
     <uib-accordion close-others="oneAtATime">
-    <uib-accordion-group heading="{{lc.ncurrent.dateOfCreation}}" is-open="true" is-disabled="false">
+        <uib-accordion-group heading="<span class='note-time'>{{lc.ncurrent.dateOfCreation}}</span>" is-open="true" is-disabled="false">
         <textarea class="notes-input" placeholder="enter note" msd-elastic note-input handler="lc.saveNote()" ng-model="lc.ncurrent.text" focus-me="lc.shouldBeOpen">
         </textarea>
     </uib-accordion-group>
-    <uib-accordion-group heading="{{item.dateToDisplay}}" ng-repeat="item in lc.list">
-        <textarea class="notes-input" placeholder="enter note" msd-elastic ng-model="item.text">
-
+        <uib-accordion-group heading="<span class='note-time'>{{item.dateToDisplay}}</span>" ng-repeat="item in lc.list">
+        <textarea class="notes-input" placeholder="enter note" msd-elastic ng-model="item.text" data-uid="{{item.$id}}" ng-change="lc.showInstruction()" note-input handler="lc.hideNotifier()">
         </textarea>
     </uib-accordion-group>
   </uib-accordion>
