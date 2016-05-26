@@ -22,3 +22,29 @@ body {
      -webkit-transform: rotate(360deg);
   }
 }
+
+#login-settings {
+    margin-bottom: 10px;
+    background: rgb(221, 221, 221);
+    color: rgb(54, 54, 54);
+    border: none;
+}
+.notes-list .panel-title {
+    font-size: 14px;
+}
+.notes-list .panel-body {
+    padding: 0;
+}
+.notes-list .panel-heading {
+    background: rgb(221, 221, 221);
+}
+.loader {
+    margin-bottom: 10px;
+}
+.notes-input {
+    width: 100%;
+    outline: none;
+    border: none;
+    resize: none;
+    padding: 10px;
+}

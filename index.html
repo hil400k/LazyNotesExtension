@@ -7,12 +7,16 @@
   </head>
   <body>
    
-    <div class="container" ng-controller="MainController as mc">
-        <button type="button" class="btn btn-default btn-block">Block level button</button>
+    <div class="container-fluide" ng-controller="MainController as mc">
+        <button type="button" class="btn btn-default btn-block" id="login-settings" ng-click="mc.lsButtonManage()">
+            <span ng-show="mc.lsButtonMode">Login</span>
+            <span ng-show="!mc.lsButtonMode">Settings</span>
+        </button>
         <div class="notes-list" ng-controller="ListController as lc" ng-include="'templates/list.html'"></div>
-        <div class="loader">
+        <div notify control="mc.notifyControl" class="loader">
             <div class="spinner">
             </div>
+            <span class="message"></span>
         </div>
     </div>
   
@@ -21,8 +25,12 @@
     <script type="text/javascript" src="js/libs/bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script type="text/javascript" src="js/libs/bower_components/firebase/firebase.js"></script>
     <script type="text/javascript" src="js/libs/bower_components/angularfire/dist/angularfire.js"></script>
+    <script type="text/javascript" src="js/libs/bower_components/angular-elastic/elastic.js"></script>
     <script type="text/javascript" src="js/libs/ui-bootstrap-custom-1.3.2.js"></script>
     <script type="text/javascript" src="js/libs/ui-bootstrap-custom-tpls-1.3.2.js"></script>
     <script type="text/javascript" src="js/popup.js"></script>
+    <script type="text/javascript" src="js/components/controllers.js"></script>
+    <script type="text/javascript" src="js/components/directives.js"></script>
+    <script type="text/javascript" src="js/components/services.js"></script>
   </body>
 </html>

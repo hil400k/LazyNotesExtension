@@ -1,10 +1,13 @@
 <div>
     <uib-accordion close-others="oneAtATime">
-    <uib-accordion-group heading="Static Header, initially expanded" is-open="true" is-disabled="false">
-      This content is straight in the template.
+    <uib-accordion-group heading="{{lc.ncurrent.dateOfCreation}}" is-open="true" is-disabled="false">
+        <textarea class="notes-input" placeholder="enter note" msd-elastic note-input handler="lc.saveNote()" ng-model="lc.ncurrent.text" focus-me="lc.shouldBeOpen">
+        </textarea>
     </uib-accordion-group>
-    <uib-accordion-group heading="heading">
-      Second
+    <uib-accordion-group heading="{{item.dateToDisplay}}" ng-repeat="item in lc.list">
+        <textarea class="notes-input" placeholder="enter note" msd-elastic ng-model="item.text">
+
+        </textarea>
     </uib-accordion-group>
   </uib-accordion>
 </div>

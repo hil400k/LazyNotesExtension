@@ -6,7 +6,8 @@
     "angular-sanitize": "*",
     "angular-ellipsis": "0.1.6",
     "angularfire": "*",
-    "bootstrap": "*"
+    "bootstrap": "*",
+    "angular-elastic": "*"
   },
   "resolutions": {
     "angular": "~1.3.0"
