@@ -14,7 +14,7 @@ angular.module("app")
             chrome.tabs.create({url: self.loginUrl});
         };
         if (!self.userObject) {
-//            self.lsButtonManage();
+
         } else {
             self.lsButtonManage = function() {
                 chrome.tabs.create({url: self.settingsUrl});
@@ -23,9 +23,12 @@ angular.module("app")
         }
 
         $scope.$watch(() => self.notifyControl, function (control) {
-            control.show();
+            if (self.userObject) {
+                control.show();
+            } else {
+                control.show('Please, login to have ability to make a note!');
+            }
         }, true);
-
     };
 
     self.init();
@@ -38,6 +41,7 @@ angular.module("app")
 
         self.list = [];
         self.shouldBeOpen = true;
+        self.logged = AuthService.$getAuth();
         self.ncurrent = NotesService.initNote();
         self.ncurrent.dateOfCreation = NotesService.getCurrentDate();
 
@@ -69,6 +73,16 @@ angular.module("app")
                         .then(getListPartialSuccess);
                 });
             }
+        };
+
+        self.removeNote = function(e) {
+            var uid = e.currentTarget.getAttribute('data-uid');
+
+            $scope.mc.notifyControl.show();
+            NotesService.removeNote(uid).then(function() {
+                NotesService.getListPartial()
+                        .then(getListPartialSuccess);
+            })
         };
 
         self.showInstruction = function() {
@@ -107,13 +121,13 @@ angular.module("app")
             }
         });
 
-        NotesService.getListPartial()
-            .then(getListPartialSuccess);
+        if (self.logged) {
+            NotesService.getListPartial()
+                .then(getListPartialSuccess);
+        }
     };
 
-    if (AuthService.$getAuth()) {
-        self.init();
-    };
+    self.init();
 
     function getListPartialSuccess(list) {
         self.list = list;
@@ -137,6 +151,12 @@ angular.module("app")
             if (day.length < 2) day = '0' + day;
             formattedDateTime = hours + ':' + minutes.substr(-2) + ' ' + day + ':' + month + ':' + year;
 
-        return formattedDateTime;
+        return {
+            fullDate: formattedDateTime,
+            time: hours + ':' + minutes.substr(-2),
+            date: day + ':' + month + ':' + year
+        };
     }
+
+
 })

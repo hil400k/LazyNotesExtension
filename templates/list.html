@@ -1,12 +1,23 @@
 <div>
     <uib-accordion close-others="oneAtATime">
-        <uib-accordion-group heading="<span class='note-time'>{{lc.ncurrent.dateOfCreation}}</span>" is-open="true" is-disabled="false">
-        <textarea class="notes-input" placeholder="enter note" msd-elastic note-input handler="lc.saveNote()" ng-model="lc.ncurrent.text" focus-me="lc.shouldBeOpen">
+        <uib-accordion-group is-open="true" is-disabled="false">
+        <uib-accordion-heading>
+           <span class='note-time'>{{lc.ncurrent.dateOfCreation.time}}</span>
+           <span class='note-date'>{{lc.ncurrent.dateOfCreation.date}}</span>
+        </uib-accordion-heading>
+        <textarea class="notes-input" placeholder="enter note" ng-disabled="!lc.logged" msd-elastic note-input handler="lc.saveNote()" ng-model="lc.ncurrent.text" focus-me="lc.shouldBeOpen">
         </textarea>
-    </uib-accordion-group>
-        <uib-accordion-group heading="<span class='note-time'>{{item.dateToDisplay}}</span>" ng-repeat="item in lc.list">
-        <textarea class="notes-input" placeholder="enter note" msd-elastic ng-model="item.text" data-uid="{{item.$id}}" ng-change="lc.showInstruction()" note-input handler="lc.hideNotifier()">
-        </textarea>
-    </uib-accordion-group>
+        </uib-accordion-group>
+        <uib-accordion-group  ng-repeat="item in lc.list">
+           <uib-accordion-heading>
+            <span class='note-time'>{{item.dateToDisplay.time}}</span>
+            <span class='note-date'>{{item.dateToDisplay.date}}</span>
+            <span class="glyphicon glyphicon-remove pull-right" data-uid="{{item.$id}}" ng-click="$event.stopPropagation(); lc.removeNote($event)"></span>
+        </uib-accordion-heading>
+            <textarea class="notes-input" placeholder="enter note" msd-elastic ng-model="item.text" data-uid="{{item.$id}}" ng-change="lc.showInstruction()" note-input handler="lc.hideNotifier()">
+            </textarea>
+        </uib-accordion-group>
   </uib-accordion>
 </div>
+
+

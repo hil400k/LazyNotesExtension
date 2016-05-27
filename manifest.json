@@ -1,24 +1,40 @@
 {
-  "manifest_version": 2,
+    "manifest_version": 2,
 
-  "name": "LazyNotes",
-  "description": "LazyNotes",
-  "version": "1.0",
+    "name": "LazyNotes",
+    "description": "LazyNotes",
+    "version": "1.0",
 
-  "browser_action": {
-   "default_icon": "icon.png",
-   "default_popup": "index.html"
-  },
-
-  "permissions": [
+    "browser_action": {
+        "default_icon": "n-19-2.png",
+        "default_popup": "index.html"
+    },
+    "commands": {
+        "_execute_browser_action": {
+            "suggested_key": {
+                "windows": "Ctrl+Q",
+                "mac": "Ctrl+Q",
+                "chromeos": "Ctrl+Q",
+                "linux": "Ctrl+Q"
+            }
+        },
+        "_execute_page_action": {
+            "suggested_key": {
+                "default": "Ctrl+Q",
+                "windows": "Ctrl+Q",
+                "mac": "Ctrl+Q"
+            }
+        }
+    },
+    "permissions": [
         "debugger",
         "storage",
         "tabs"
    ],
     "content_scripts": [
         {
-          "matches": ["http://*/*"],
-          "js": ["js/auth.js"]
+            "matches": ["http://*/*"],
+            "js": ["js/auth.js"]
         }
     ],
     "background": {
@@ -26,5 +42,5 @@
             "js/background.js"
         ]
     },
-  "content_security_policy": "script-src 'self' https://cdn.firebase.com https://*.firebaseio.com https://*.firebaseio-demo.com; object-src 'self'"
+    "content_security_policy": "script-src 'self' https://cdn.firebase.com https://*.firebaseio.com https://*.firebaseio-demo.com; object-src 'self'"
 }
