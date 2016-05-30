@@ -10,11 +10,17 @@ angular.module("app")
 
     ns.ncurrent = {};
 
+    ns.getDefaultTag = function() {
+        return JSON.parse(localStorage.getItem('settings')) ? JSON.parse(localStorage.getItem('settings')).defaultTag : null;
+    }
+
+    ns.defaultTag = ns.getDefaultTag();
+
     ns.initNote = function () {
         ns.ncurrent = {
             dateOfCreation: null,
             text: '',
-            tags: '', // user default tag
+            tags: ns.defaultTag ? [ns.defaultTag] : '', // user default tag
             priority: 1,
             dateOfEditing: null,
             editingsCount: 0,
