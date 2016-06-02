@@ -33,7 +33,7 @@
    ],
     "content_scripts": [
         {
-            "matches": ["http://*/*"],
+            "matches": ["https://*/*"],
             "js": ["js/auth.js"]
         }
     ],

@@ -4,8 +4,10 @@ angular.module("app")
     var self = this;
 
     self.init = function() {
-        self.loginUrl = 'http://localhost:8000/#/login';
-        self.settingsUrl = 'http://localhost:8000/#/settings';
+//        self.loginUrl = 'http://localhost:8000/#/login';
+//        self.settingsUrl = 'http://localhost:8000/#/settings';
+        self.loginUrl = 'https://lazynotes.firebaseapp.com/#/login';
+        self.settingsUrl = 'https://lazynotes.firebaseapp.com/#/settings';
         self.userObject = AuthService.$getAuth();
         self.lsButtonMode = true;
         self.notifyControl = {};
